@@ -1,19 +1,35 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const browserSync = require('browser-sync').create();
+const { src, dest, series, watch } = require('gulp');
 
+// styles
+const scss = require('gulp-sass')(require('sass'));
+const autoPrefixer = require('gulp-autoprefixer');
+const cssMinify = require('gulp-clean-css');
 
-// Compile Sass into css
-function style(){
-    // 1. Where is my scss file
-    return gulp.src('./scss/**/*.scss')
-    // 2. Pass that file through sass compiler
-    .pipe(sass())
-    // 3. Where do I save the compiled CSS?
-    .pipe(gulp.dest('./css'))
-    // 4. Stream changes to all browsers
-    .pipe(browserSync.stream());
+function styles() {
+    return src('./frontend/src/styles/**/*.scss')
+        .pipe(scss())
+        .pipe(autoPrefixer('last 2 versions'))
+        .pipe(cssMinify())
+        .pipe(dest('./frontend/dist/styles/'))
 }
 
+// scripts
+const jsMinify = require('gulp-terser');
 
-exports.style = style;
+function scripts() {
+    return src('./frontend/src/scripts/**/*.js')
+        .pipe(jsMinify())
+        .pipe(dest('./frontend/dist/scripts/'))
+}
+
+function watchTask() {
+    watch(
+            [
+            './frontend/src/styles/**/*.scss',
+            './frontend/src/scripts/**/*.js'
+            ],
+            series(styles, scripts)
+        )
+}
+
+exports.default = series(styles, scripts, watchTask);

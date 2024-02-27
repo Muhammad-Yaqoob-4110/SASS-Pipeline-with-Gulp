@@ -4,7 +4,7 @@
   "description": "scss-pipeline-with-gulp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install && gulp"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,11 @@
   "author": "Ali Ahmed",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^3.0.2",
     "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0",
-    "gulp-sass": "^5.1.0"
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.52.2"
   }
 }
