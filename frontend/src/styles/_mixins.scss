@@ -1,0 +1,12 @@
+// _mixins.scss
+
+@mixin centerAbsolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @mixin boxShadow($r, $g, $b, $a) {
+    box-shadow: 0px 4px 25px rgba($r, $g, $b, $a);
+  }

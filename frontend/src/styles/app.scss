@@ -1,5 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+@import "variables";
+@import "base";
+@import "layout";
+@import "home";
+@import "about";
+@import "skills";
+@import "buttons";
+@import "work";
+@import "contact";
+@import "footer";
+@import "nav";
+@import "media";
